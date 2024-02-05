@@ -17,6 +17,8 @@ object Pasteurized : Feature {
 	}
 
 	@JvmStatic
+	@get:JvmName("gamepad1")
+	@set:JvmName("gamepad1")
 	var gamepad1: PasteurizedGamepad
 		get() { return gamepad1Cell.get() }
 		set(value) { gamepad1Cell.accept(value) }
@@ -28,6 +30,8 @@ object Pasteurized : Feature {
 	}
 
 	@JvmStatic
+	@get:JvmName("gamepad2")
+	@set:JvmName("gamepad2")
 	var gamepad2: PasteurizedGamepad
 		get() { return gamepad2Cell.get() }
 		set(value) { gamepad2Cell.accept(value) }
