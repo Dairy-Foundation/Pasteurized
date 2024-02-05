@@ -4,7 +4,7 @@ import dev.frozenmilk.dairy.core.util.supplier.EnhancedBooleanSupplier
 import dev.frozenmilk.dairy.core.util.supplier.EnhancedNumberSupplier
 
 @Suppress("INAPPLICABLE_JVM_NAME")
-interface PasteurizedGamepad : Cloneable {
+interface PasteurizedGamepad {
 	/**
 	 * left analog stick horizontal axis
 	 */
@@ -261,7 +261,5 @@ interface PasteurizedGamepad : Cloneable {
 		set(value) {
 			guide = value
 		}
-
-	override fun clone(): PasteurizedGamepad = ClonePad(this)
 }
 

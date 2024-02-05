@@ -1,6 +1,6 @@
 package dev.frozenmilk.dairy.pasteurized
 
-internal class ClonePad(pasteurizedGamepad: PasteurizedGamepad) : PasteurizedGamepad {
+class ClonePad(pasteurizedGamepad: PasteurizedGamepad) : PasteurizedGamepad {
 	override var leftStickX = pasteurizedGamepad.leftStickX
 	override var leftStickY = pasteurizedGamepad.leftStickY
 	override var rightStickX = pasteurizedGamepad.rightStickX
