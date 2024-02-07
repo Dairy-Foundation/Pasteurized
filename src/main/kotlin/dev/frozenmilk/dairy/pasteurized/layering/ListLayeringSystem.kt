@@ -2,26 +2,11 @@ package dev.frozenmilk.dairy.pasteurized.layering
 
 import dev.frozenmilk.dairy.pasteurized.PasteurizedGamepad
 
-class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : IncrementingLayeringSystem<Int>, MutableList<PasteurizedGamepad> by list {
+class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : IncrementingLayeringSystem<Int> {
 	init {
-		forEach {
+		list.forEach {
 			attachGamepad(it)
 		}
-	}
-
-	override fun add(element: PasteurizedGamepad): Boolean {
-		attachGamepad(element)
-		return list.add(element)
-	}
-
-	override fun addAll(elements: Collection<PasteurizedGamepad>): Boolean {
-		elements.forEach { attachGamepad(it) }
-		return list.addAll(elements)
-	}
-
-	override fun addAll(index: Int, elements: Collection<PasteurizedGamepad>): Boolean {
-		elements.forEach { attachGamepad(it) }
-		return list.addAll(index, elements)
 	}
 
 	/**
@@ -29,7 +14,7 @@ class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : I
 	 */
 	override fun next() {
 		layer++
-		layer = layer.coerceIn(0 until size)
+		layer = layer.coerceIn(0 until list.size)
 	}
 
 	/**
@@ -37,15 +22,15 @@ class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : I
 	 */
 	override fun previous() {
 		layer--
-		layer = layer.coerceIn(0 until size)
+		layer = layer.coerceIn(0 until list.size)
 	}
 
 	override var gamepad: PasteurizedGamepad?
-		get() { return this.getOrNull(layer) }
+		get() { return list.getOrNull(layer) }
 		set(value) {
-			if (layer in 0 until size && value != null) {
+			if (layer in 0 until list.size && value != null) {
 				attachGamepad(value)
-				this[layer] = value
+				list[layer] = value
 			}
 		}
 

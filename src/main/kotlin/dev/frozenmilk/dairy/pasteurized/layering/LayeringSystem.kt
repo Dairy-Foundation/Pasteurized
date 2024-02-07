@@ -16,44 +16,50 @@ interface LayeringSystem<T> {
 	 * attaches a gamepad to the layering system, which causes it to go to being at rest when not active in the system, once a gamepad has been attached to a layering system, it cannot be detached
 	 */
 	fun attachGamepad(gamepad: PasteurizedGamepad) {
-		val isActive = { isActive(gamepad) }
+		val isActiveBoolean = { isActive(gamepad) }
+		val isActiveNumber = { supplier: EnhancedNumberSupplier<Double> ->
+			{
+				if (isActiveBoolean()) supplier.get()
+				else 0.0
+			}
+		}
 
-		gamepad.leftStickX = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.leftStickX.supplier.get() else 0.0 }, gamepad.leftStickX.modify, gamepad.leftStickX.lowerDeadzone, gamepad.leftStickX.upperDeadzone)
-		gamepad.leftStickY = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.leftStickY.supplier.get() else 0.0 }, gamepad.leftStickY.modify, gamepad.leftStickY.lowerDeadzone, gamepad.leftStickY.upperDeadzone)
-		gamepad.rightStickX = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.rightStickX.supplier.get() else 0.0 }, gamepad.rightStickX.modify, gamepad.rightStickX.lowerDeadzone, gamepad.rightStickX.upperDeadzone)
-		gamepad.rightStickY = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.rightStickY.supplier.get() else 0.0 }, gamepad.rightStickY.modify, gamepad.rightStickY.lowerDeadzone, gamepad.rightStickY.upperDeadzone)
+		gamepad.leftStickX = EnhancedNumberSupplier(isActiveNumber(gamepad.leftStickX), gamepad.leftStickX.modify, gamepad.leftStickX.lowerDeadzone, gamepad.leftStickX.upperDeadzone)
+		gamepad.leftStickY = EnhancedNumberSupplier(isActiveNumber(gamepad.leftStickY), gamepad.leftStickY.modify, gamepad.leftStickY.lowerDeadzone, gamepad.leftStickY.upperDeadzone)
+		gamepad.rightStickX = EnhancedNumberSupplier(isActiveNumber(gamepad.rightStickX), gamepad.rightStickX.modify, gamepad.rightStickX.lowerDeadzone, gamepad.rightStickX.upperDeadzone)
+		gamepad.rightStickY = EnhancedNumberSupplier(isActiveNumber(gamepad.rightStickY), gamepad.rightStickY.modify, gamepad.rightStickY.lowerDeadzone, gamepad.rightStickY.upperDeadzone)
 
-		gamepad.dpadUp = gamepad.dpadUp and isActive
-		gamepad.dpadDown = gamepad.dpadDown and isActive
-		gamepad.dpadLeft = gamepad.dpadLeft and isActive
-		gamepad.dpadRight = gamepad.dpadRight and isActive
+		gamepad.dpadUp = gamepad.dpadUp and isActiveBoolean
+		gamepad.dpadDown = gamepad.dpadDown and isActiveBoolean
+		gamepad.dpadLeft = gamepad.dpadLeft and isActiveBoolean
+		gamepad.dpadRight = gamepad.dpadRight and isActiveBoolean
 
-		gamepad.a = gamepad.a and isActive
-		gamepad.b = gamepad.b and isActive
-		gamepad.x = gamepad.x and isActive
-		gamepad.y = gamepad.y and isActive
+		gamepad.a = gamepad.a and isActiveBoolean
+		gamepad.b = gamepad.b and isActiveBoolean
+		gamepad.x = gamepad.x and isActiveBoolean
+		gamepad.y = gamepad.y and isActiveBoolean
 
-		gamepad.guide = gamepad.guide and isActive
-		gamepad.start = gamepad.start and isActive
-		gamepad.back = gamepad.back and isActive
+		gamepad.guide = gamepad.guide and isActiveBoolean
+		gamepad.start = gamepad.start and isActiveBoolean
+		gamepad.back = gamepad.back and isActiveBoolean
 
-		gamepad.leftBumper = gamepad.leftBumper and isActive
-		gamepad.rightBumper = gamepad.rightBumper and isActive
+		gamepad.leftBumper = gamepad.leftBumper and isActiveBoolean
+		gamepad.rightBumper = gamepad.rightBumper and isActiveBoolean
 
-		gamepad.leftStickButton = gamepad.leftStickButton and isActive
-		gamepad.rightStickButton = gamepad.rightStickButton and isActive
+		gamepad.leftStickButton = gamepad.leftStickButton and isActiveBoolean
+		gamepad.rightStickButton = gamepad.rightStickButton and isActiveBoolean
 
-		gamepad.leftTrigger = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.leftTrigger.supplier.get() else 0.0 }, gamepad.leftTrigger.modify, gamepad.leftTrigger.lowerDeadzone, gamepad.leftTrigger.upperDeadzone)
-		gamepad.rightTrigger = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.rightTrigger.supplier.get() else 0.0 }, gamepad.rightTrigger.modify, gamepad.rightTrigger.lowerDeadzone, gamepad.rightTrigger.upperDeadzone)
+		gamepad.leftTrigger = EnhancedNumberSupplier(isActiveNumber(gamepad.leftTrigger), gamepad.leftTrigger.modify, gamepad.leftTrigger.lowerDeadzone, gamepad.leftTrigger.upperDeadzone)
+		gamepad.rightTrigger = EnhancedNumberSupplier(isActiveNumber(gamepad.rightTrigger), gamepad.rightTrigger.modify, gamepad.rightTrigger.lowerDeadzone, gamepad.rightTrigger.upperDeadzone)
 
-		gamepad.touchpad = gamepad.touchpad and isActive
-		gamepad.touchpadFinger1 = gamepad.touchpadFinger1 and isActive
-		gamepad.touchpadFinger2 = gamepad.touchpadFinger2 and isActive
+		gamepad.touchpad = gamepad.touchpad and isActiveBoolean
+		gamepad.touchpadFinger1 = gamepad.touchpadFinger1 and isActiveBoolean
+		gamepad.touchpadFinger2 = gamepad.touchpadFinger2 and isActiveBoolean
 
-		gamepad.touchpadFinger1X = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.touchpadFinger1X.supplier.get() else 0.0 }, gamepad.touchpadFinger1X.modify, gamepad.touchpadFinger1X.lowerDeadzone, gamepad.touchpadFinger1X.upperDeadzone)
-		gamepad.touchpadFinger1X = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.touchpadFinger1X.supplier.get() else 0.0 }, gamepad.touchpadFinger1X.modify, gamepad.touchpadFinger1X.lowerDeadzone, gamepad.touchpadFinger1X.upperDeadzone)
-		gamepad.touchpadFinger2Y = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.touchpadFinger2Y.supplier.get() else 0.0 }, gamepad.touchpadFinger2Y.modify, gamepad.touchpadFinger2Y.lowerDeadzone, gamepad.touchpadFinger2Y.upperDeadzone)
-		gamepad.touchpadFinger2Y = EnhancedNumberSupplier({ if (isActive.invoke()) gamepad.touchpadFinger2Y.supplier.get() else 0.0 }, gamepad.touchpadFinger2Y.modify, gamepad.touchpadFinger2Y.lowerDeadzone, gamepad.touchpadFinger2Y.upperDeadzone)
+		gamepad.touchpadFinger1X = EnhancedNumberSupplier(isActiveNumber(gamepad.touchpadFinger1X), gamepad.touchpadFinger1X.modify, gamepad.touchpadFinger1X.lowerDeadzone, gamepad.touchpadFinger1X.upperDeadzone)
+		gamepad.touchpadFinger1Y = EnhancedNumberSupplier(isActiveNumber(gamepad.touchpadFinger1Y), gamepad.touchpadFinger1Y.modify, gamepad.touchpadFinger1Y.lowerDeadzone, gamepad.touchpadFinger1Y.upperDeadzone)
+		gamepad.touchpadFinger2X = EnhancedNumberSupplier(isActiveNumber(gamepad.touchpadFinger2X), gamepad.touchpadFinger2X.modify, gamepad.touchpadFinger2X.lowerDeadzone, gamepad.touchpadFinger2X.upperDeadzone)
+		gamepad.touchpadFinger2Y = EnhancedNumberSupplier(isActiveNumber(gamepad.touchpadFinger2Y), gamepad.touchpadFinger2Y.modify, gamepad.touchpadFinger2Y.lowerDeadzone, gamepad.touchpadFinger2Y.upperDeadzone)
 	}
 }
 

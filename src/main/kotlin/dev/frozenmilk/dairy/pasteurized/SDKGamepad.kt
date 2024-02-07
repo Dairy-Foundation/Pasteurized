@@ -13,7 +13,7 @@ class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad {
 	/**
 	 * left analog stick vertical axis
 	 */
-	override var leftStickY = EnhancedNumberSupplier { gamepad.left_stick_y.toDouble() }
+	override var leftStickY = EnhancedNumberSupplier { -gamepad.left_stick_y.toDouble() }
 
 	/**
 	 * right analog stick horizontal axis
@@ -23,7 +23,7 @@ class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad {
 	/**
 	 * right analog stick vertical axis
 	 */
-	override var rightStickY = EnhancedNumberSupplier { gamepad.right_stick_y.toDouble() }
+	override var rightStickY = EnhancedNumberSupplier { -gamepad.right_stick_y.toDouble() }
 
 	/**
 	 * dpad up
