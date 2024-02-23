@@ -1,21 +1,21 @@
 package dev.frozenmilk.dairy.pasteurized.layering
 
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedBooleanSupplier
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedNumberSupplier
+import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
 import dev.frozenmilk.dairy.pasteurized.PasteurizedGamepad
 
 class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad {
 	private val err by lazy { IllegalStateException("layering system was unable to supply a gamepad") }
-	override var leftStickX: EnhancedNumberSupplier<Double>
+	override var leftStickX: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.leftStickX ?: throw err }
 		set(value) { layeringSystem.gamepad?.leftStickX = value }
-	override var leftStickY: EnhancedNumberSupplier<Double>
+	override var leftStickY: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.leftStickY ?: throw err }
 		set(value) { layeringSystem.gamepad?.leftStickY = value }
-	override var rightStickX: EnhancedNumberSupplier<Double>
+	override var rightStickX: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.rightStickX ?: throw err }
 		set(value) { layeringSystem.gamepad?.rightStickX = value }
-	override var rightStickY: EnhancedNumberSupplier<Double>
+	override var rightStickY: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.rightStickY ?: throw err }
 		set(value) { layeringSystem.gamepad?.rightStickY = value }
 	override var dpadUp: EnhancedBooleanSupplier
@@ -63,10 +63,10 @@ class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad
 	override var rightStickButton: EnhancedBooleanSupplier
 		get() { return layeringSystem.gamepad?.rightStickButton ?: throw err }
 		set(value) { layeringSystem.gamepad?.rightStickButton = value }
-	override var leftTrigger: EnhancedNumberSupplier<Double>
+	override var leftTrigger: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.leftTrigger ?: throw err }
 		set(value) { layeringSystem.gamepad?.leftTrigger = value }
-	override var rightTrigger: EnhancedNumberSupplier<Double>
+	override var rightTrigger: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.rightTrigger ?: throw err }
 		set(value) { layeringSystem.gamepad?.rightTrigger = value }
 	override var touchpad: EnhancedBooleanSupplier
@@ -78,16 +78,16 @@ class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad
 	override var touchpadFinger2: EnhancedBooleanSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger2 ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger2 = value }
-	override var touchpadFinger1X: EnhancedNumberSupplier<Double>
+	override var touchpadFinger1X: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger1X ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger1X = value }
-	override var touchpadFinger1Y: EnhancedNumberSupplier<Double>
+	override var touchpadFinger1Y: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger1Y ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger1Y = value }
-	override var touchpadFinger2X: EnhancedNumberSupplier<Double>
+	override var touchpadFinger2X: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger2X ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger2X = value }
-	override var touchpadFinger2Y: EnhancedNumberSupplier<Double>
+	override var touchpadFinger2Y: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger2Y ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger2Y = value }
 }

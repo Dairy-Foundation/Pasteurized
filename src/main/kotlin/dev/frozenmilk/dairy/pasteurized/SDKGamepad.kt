@@ -1,29 +1,29 @@
 package dev.frozenmilk.dairy.pasteurized
 
 import com.qualcomm.robotcore.hardware.Gamepad
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedBooleanSupplier
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedNumberSupplier
+import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
 
 class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad {
 	/**
 	 * left analog stick horizontal axis
 	 */
-	override var leftStickX = EnhancedNumberSupplier { gamepad.left_stick_x.toDouble() }
+	override var leftStickX = EnhancedDoubleSupplier({ gamepad.left_stick_x.toDouble() })
 
 	/**
 	 * left analog stick vertical axis
 	 */
-	override var leftStickY = EnhancedNumberSupplier { -gamepad.left_stick_y.toDouble() }
+	override var leftStickY = EnhancedDoubleSupplier({ -gamepad.left_stick_y.toDouble() })
 
 	/**
 	 * right analog stick horizontal axis
 	 */
-	override var rightStickX = EnhancedNumberSupplier { gamepad.right_stick_x.toDouble() }
+	override var rightStickX = EnhancedDoubleSupplier({ gamepad.right_stick_x.toDouble() })
 
 	/**
 	 * right analog stick vertical axis
 	 */
-	override var rightStickY = EnhancedNumberSupplier { -gamepad.right_stick_y.toDouble() }
+	override var rightStickY = EnhancedDoubleSupplier({ -gamepad.right_stick_y.toDouble() })
 
 	/**
 	 * dpad up
@@ -105,12 +105,12 @@ class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad {
 	/**
 	 * left trigger
 	 */
-	override var leftTrigger = EnhancedNumberSupplier { gamepad.left_trigger.toDouble() }
+	override var leftTrigger = EnhancedDoubleSupplier({ gamepad.left_trigger.toDouble() })
 
 	/**
 	 * right trigger
 	 */
-	override var rightTrigger = EnhancedNumberSupplier { gamepad.right_trigger.toDouble() }
+	override var rightTrigger = EnhancedDoubleSupplier({ gamepad.right_trigger.toDouble() })
 
 	/**
 	 * PS4 Support - Circle
@@ -175,13 +175,13 @@ class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad {
 
 	override var touchpadFinger2 = EnhancedBooleanSupplier { gamepad.touchpad_finger_2 }
 
-	override var touchpadFinger1X = EnhancedNumberSupplier { gamepad.touchpad_finger_1_x.toDouble() }
+	override var touchpadFinger1X = EnhancedDoubleSupplier({ gamepad.touchpad_finger_1_x.toDouble() })
 
-	override var touchpadFinger1Y = EnhancedNumberSupplier { gamepad.touchpad_finger_1_y.toDouble() }
+	override var touchpadFinger1Y = EnhancedDoubleSupplier({ gamepad.touchpad_finger_1_y.toDouble() })
 
-	override var touchpadFinger2X = EnhancedNumberSupplier { gamepad.touchpad_finger_2_x.toDouble() }
+	override var touchpadFinger2X = EnhancedDoubleSupplier({ gamepad.touchpad_finger_2_x.toDouble() })
 
-	override var touchpadFinger2Y = EnhancedNumberSupplier { gamepad.touchpad_finger_2_y.toDouble() }
+	override var touchpadFinger2Y = EnhancedDoubleSupplier({ gamepad.touchpad_finger_2_y.toDouble() })
 
 	/**
 	 * PS4 Support - PS Button

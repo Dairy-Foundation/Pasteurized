@@ -1,7 +1,8 @@
 package dev.frozenmilk.dairy.pasteurized
 
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedBooleanSupplier
-import dev.frozenmilk.dairy.core.util.supplier.EnhancedNumberSupplier
+import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedNumberSupplier
 
 @Suppress("INAPPLICABLE_JVM_NAME")
 interface PasteurizedGamepad {
@@ -10,28 +11,28 @@ interface PasteurizedGamepad {
 	 */
 	@get:JvmName("leftStickX")
 	@set:JvmName("leftStickX")
-	var leftStickX: EnhancedNumberSupplier<Double>
+	var leftStickX: EnhancedDoubleSupplier
 
 	/**
 	 * left analog stick vertical axis
 	 */
 	@get:JvmName("leftStickY")
 	@set:JvmName("leftStickY")
-	var leftStickY: EnhancedNumberSupplier<Double>
+	var leftStickY: EnhancedDoubleSupplier
 
 	/**
 	 * right analog stick horizontal axis
 	 */
 	@get:JvmName("rightStickX")
 	@set:JvmName("rightStickX")
-	var rightStickX: EnhancedNumberSupplier<Double>
+	var rightStickX: EnhancedDoubleSupplier
 
 	/**
 	 * right analog stick vertical axis
 	 */
 	@get:JvmName("rightStickY")
 	@set:JvmName("rightStickY")
-	var rightStickY: EnhancedNumberSupplier<Double>
+	var rightStickY: EnhancedDoubleSupplier
 
 	/**
 	 * dpad up
@@ -145,14 +146,14 @@ interface PasteurizedGamepad {
 	 */
 	@get:JvmName("leftTrigger")
 	@set:JvmName("leftTrigger")
-	var leftTrigger: EnhancedNumberSupplier<Double>
+	var leftTrigger: EnhancedDoubleSupplier
 
 	/**
 	 * right trigger
 	 */
 	@get:JvmName("rightTrigger")
 	@set:JvmName("rightTrigger")
-	var rightTrigger: EnhancedNumberSupplier<Double>
+	var rightTrigger: EnhancedDoubleSupplier
 
 	/**
 	 * PS4 Support - Circle
@@ -237,19 +238,19 @@ interface PasteurizedGamepad {
 
 	@get:JvmName("touchpadFinger1X")
 	@set:JvmName("touchpadFinger1X")
-	var touchpadFinger1X: EnhancedNumberSupplier<Double>
+	var touchpadFinger1X: EnhancedDoubleSupplier
 
 	@get:JvmName("touchpadFinger1Y")
 	@set:JvmName("touchpadFinger1Y")
-	var touchpadFinger1Y: EnhancedNumberSupplier<Double>
+	var touchpadFinger1Y: EnhancedDoubleSupplier
 
 	@get:JvmName("touchpadFinger2X")
 	@set:JvmName("touchpadFinger2X")
-	var touchpadFinger2X: EnhancedNumberSupplier<Double>
+	var touchpadFinger2X: EnhancedDoubleSupplier
 
 	@get:JvmName("touchpadFinger2Y")
 	@set:JvmName("touchpadFinger2Y")
-	var touchpadFinger2Y: EnhancedNumberSupplier<Double>
+	var touchpadFinger2Y: EnhancedDoubleSupplier
 
 	/**
 	 * PS4 Support - PS Button
