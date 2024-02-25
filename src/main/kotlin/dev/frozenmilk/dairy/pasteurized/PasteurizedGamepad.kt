@@ -2,7 +2,6 @@ package dev.frozenmilk.dairy.pasteurized
 
 import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
 import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
-import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedNumberSupplier
 
 @Suppress("INAPPLICABLE_JVM_NAME")
 interface PasteurizedGamepad {
