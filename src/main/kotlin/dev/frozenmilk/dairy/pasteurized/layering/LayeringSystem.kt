@@ -24,10 +24,10 @@ interface LayeringSystem<T> {
 			}
 		}
 
-		gamepad.leftStickX = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftStickX), gamepad.leftStickX.modifier, gamepad.leftStickX.lowerDeadzone, gamepad.leftStickX.upperDeadzone)
-		gamepad.leftStickY = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftStickY), gamepad.leftStickY.modifier, gamepad.leftStickY.lowerDeadzone, gamepad.leftStickY.upperDeadzone)
-		gamepad.rightStickX = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightStickX), gamepad.rightStickX.modifier, gamepad.rightStickX.lowerDeadzone, gamepad.rightStickX.upperDeadzone)
-		gamepad.rightStickY = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightStickY), gamepad.rightStickY.modifier, gamepad.rightStickY.lowerDeadzone, gamepad.rightStickY.upperDeadzone)
+		gamepad.leftStickX = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftStickX), gamepad.leftStickX.modifier)
+		gamepad.leftStickY = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftStickY), gamepad.leftStickY.modifier)
+		gamepad.rightStickX = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightStickX), gamepad.rightStickX.modifier)
+		gamepad.rightStickY = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightStickY), gamepad.rightStickY.modifier)
 
 		gamepad.dpadUp = gamepad.dpadUp and isActiveBoolean
 		gamepad.dpadDown = gamepad.dpadDown and isActiveBoolean
@@ -49,17 +49,17 @@ interface LayeringSystem<T> {
 		gamepad.leftStickButton = gamepad.leftStickButton and isActiveBoolean
 		gamepad.rightStickButton = gamepad.rightStickButton and isActiveBoolean
 
-		gamepad.leftTrigger = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftTrigger), gamepad.leftTrigger.modifier, gamepad.leftTrigger.lowerDeadzone, gamepad.leftTrigger.upperDeadzone)
-		gamepad.rightTrigger = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightTrigger), gamepad.rightTrigger.modifier, gamepad.rightTrigger.lowerDeadzone, gamepad.rightTrigger.upperDeadzone)
+		gamepad.leftTrigger = EnhancedDoubleSupplier(isActiveNumber(gamepad.leftTrigger), gamepad.leftTrigger.modifier)
+		gamepad.rightTrigger = EnhancedDoubleSupplier(isActiveNumber(gamepad.rightTrigger), gamepad.rightTrigger.modifier)
 
 		gamepad.touchpad = gamepad.touchpad and isActiveBoolean
 		gamepad.touchpadFinger1 = gamepad.touchpadFinger1 and isActiveBoolean
 		gamepad.touchpadFinger2 = gamepad.touchpadFinger2 and isActiveBoolean
 
-		gamepad.touchpadFinger1X = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger1X), gamepad.touchpadFinger1X.modifier, gamepad.touchpadFinger1X.lowerDeadzone, gamepad.touchpadFinger1X.upperDeadzone)
-		gamepad.touchpadFinger1Y = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger1Y), gamepad.touchpadFinger1Y.modifier, gamepad.touchpadFinger1Y.lowerDeadzone, gamepad.touchpadFinger1Y.upperDeadzone)
-		gamepad.touchpadFinger2X = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger2X), gamepad.touchpadFinger2X.modifier, gamepad.touchpadFinger2X.lowerDeadzone, gamepad.touchpadFinger2X.upperDeadzone)
-		gamepad.touchpadFinger2Y = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger2Y), gamepad.touchpadFinger2Y.modifier, gamepad.touchpadFinger2Y.lowerDeadzone, gamepad.touchpadFinger2Y.upperDeadzone)
+		gamepad.touchpadFinger1X = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger1X), gamepad.touchpadFinger1X.modifier)
+		gamepad.touchpadFinger1Y = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger1Y), gamepad.touchpadFinger1Y.modifier)
+		gamepad.touchpadFinger2X = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger2X), gamepad.touchpadFinger2X.modifier)
+		gamepad.touchpadFinger2Y = EnhancedDoubleSupplier(isActiveNumber(gamepad.touchpadFinger2Y), gamepad.touchpadFinger2Y.modifier)
 	}
 }
 
