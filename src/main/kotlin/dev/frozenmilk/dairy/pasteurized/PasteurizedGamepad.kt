@@ -115,8 +115,8 @@ interface PasteurizedGamepad<N: IEnhancedNumericSupplier<Double>, B: IEnhancedBo
 	/**
 	 * button left bumper
 	 */
-	@get:JvmName("leftBumber")
-	@set:JvmName("leftBumber")
+	@get:JvmName("leftBumper")
+	@set:JvmName("leftBumper")
 	var leftBumper: B
 
 	/**
