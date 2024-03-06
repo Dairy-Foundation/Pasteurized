@@ -4,7 +4,7 @@ import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
 import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
 import dev.frozenmilk.dairy.pasteurized.PasteurizedGamepad
 
-class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad {
+class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier> {
 	private val err by lazy { IllegalStateException("layering system was unable to supply a gamepad") }
 	override var leftStickX: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.leftStickX ?: throw err }
@@ -81,8 +81,8 @@ class LayeredGamepad(var layeringSystem: LayeringSystem<*>) : PasteurizedGamepad
 	override var touchpadFinger1X: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger1X ?: throw err }
 		set(value) { layeringSystem.gamepad?.touchpadFinger1X = value }
-	override var touchpadFinger1Y: EnhancedDoubleSupplier
-		get() { return layeringSystem.gamepad?.touchpadFinger1Y ?: throw err }
+	override var touchpadFinger1Y
+		get() = layeringSystem.gamepad?.touchpadFinger1Y ?: throw err
 		set(value) { layeringSystem.gamepad?.touchpadFinger1Y = value }
 	override var touchpadFinger2X: EnhancedDoubleSupplier
 		get() { return layeringSystem.gamepad?.touchpadFinger2X ?: throw err }

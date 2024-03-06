@@ -1,8 +1,10 @@
 package dev.frozenmilk.dairy.pasteurized.layering
 
+import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
 import dev.frozenmilk.dairy.pasteurized.PasteurizedGamepad
 
-class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : IncrementingLayeringSystem<Int> {
+class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>>) : IncrementingLayeringSystem<Int> {
 	init {
 		list.forEach {
 			attachGamepad(it)
@@ -25,7 +27,7 @@ class ListLayeringSystem (private val list: MutableList<PasteurizedGamepad>) : I
 		layer = layer.coerceIn(0 until list.size)
 	}
 
-	override var gamepad: PasteurizedGamepad?
+	override var gamepad: PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>?
 		get() { return list.getOrNull(layer) }
 		set(value) {
 			if (layer in 0 until list.size && value != null) {

@@ -1,23 +1,26 @@
 package dev.frozenmilk.dairy.pasteurized.layering
 
+import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
+import dev.frozenmilk.dairy.core.util.supplier.logical.IEnhancedBooleanSupplier
 import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
+import dev.frozenmilk.dairy.core.util.supplier.numeric.IEnhancedNumericSupplier
 import dev.frozenmilk.dairy.pasteurized.PasteurizedGamepad
 
 interface LayeringSystem<T> {
 	/**
 	 * the gamepad of the current layer
 	 */
-	var gamepad: PasteurizedGamepad?
+	var gamepad: PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>?
 	var layer: T
 
-	fun isActive(gamepad: PasteurizedGamepad) = gamepad == this.gamepad
+	fun isActive(gamepad: PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>) = gamepad == this.gamepad
 
 	/**
 	 * attaches a gamepad to the layering system, which causes it to go to being at rest when not active in the system, once a gamepad has been attached to a layering system, it cannot be detached
 	 */
-	fun attachGamepad(gamepad: PasteurizedGamepad) {
+	fun attachGamepad(gamepad: PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>) {
 		val isActiveBoolean = { isActive(gamepad) }
-		val isActiveNumber = { supplier: EnhancedDoubleSupplier ->
+		val isActiveNumber = { supplier: IEnhancedNumericSupplier<Double> ->
 			{
 				if (isActiveBoolean()) supplier.position
 				else 0.0
