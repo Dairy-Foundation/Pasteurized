@@ -13,8 +13,9 @@ object Pasteurized : Feature {
 			.yields()
 
 	private var gamepad1Cell: LazyCell<PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>> = LazyCell {
+		if (!FeatureRegistrar.opModeActive) throw IllegalStateException("OpMode not inited, cannot yet access gamepad1")
 		SDKGamepad (
-				FeatureRegistrar.activeOpModeWrapper?.opMode?.gamepad1 ?: throw IllegalStateException("OpMode not inited, cannot yet access gamepad1")
+				FeatureRegistrar.activeOpModeWrapper.opMode.gamepad1
 		)
 	}
 
@@ -24,8 +25,9 @@ object Pasteurized : Feature {
 	var gamepad1: PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier> by gamepad1Cell
 
 	private var gamepad2Cell: LazyCell<PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>> = LazyCell {
+		if (!FeatureRegistrar.opModeActive) throw IllegalStateException("OpMode not inited, cannot yet access gamepad2")
 		SDKGamepad (
-				FeatureRegistrar.activeOpModeWrapper?.opMode?.gamepad2 ?: throw IllegalStateException("OpMode not inited, cannot yet access gamepad2")
+				FeatureRegistrar.activeOpModeWrapper.opMode.gamepad2
 		)
 	}
 
