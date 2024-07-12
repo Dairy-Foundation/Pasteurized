@@ -2,15 +2,14 @@ package dev.frozenmilk.dairy.pasteurized
 
 import dev.frozenmilk.dairy.core.Feature
 import dev.frozenmilk.dairy.core.FeatureRegistrar
-import dev.frozenmilk.dairy.core.dependencyresolution.dependencyset.DependencySet
+import dev.frozenmilk.dairy.core.dependency.lazy.Yielding
 import dev.frozenmilk.dairy.core.util.supplier.logical.EnhancedBooleanSupplier
 import dev.frozenmilk.dairy.core.util.supplier.numeric.EnhancedDoubleSupplier
 import dev.frozenmilk.dairy.core.wrapper.Wrapper
 import dev.frozenmilk.util.cell.LazyCell
 
 object Pasteurized : Feature {
-	override val dependencies = DependencySet(this)
-			.yields()
+	override val dependency = Yielding
 
 	private var gamepad1Cell: LazyCell<PasteurizedGamepad<EnhancedDoubleSupplier, EnhancedBooleanSupplier>> = LazyCell {
 		if (!FeatureRegistrar.opModeActive) throw IllegalStateException("OpMode not inited, cannot yet access gamepad1")
