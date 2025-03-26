@@ -23,6 +23,18 @@ class SDKGamepad(gamepad: Gamepad) : PasteurizedGamepad<EnhancedDoubleSupplier, 
 	@get:JvmName("rightStickY")
 	@set:JvmName("rightStickY")
 	override var rightStickY = EnhancedDoubleSupplier { -gamepad.right_stick_y.toDouble() }
+	@get:JvmName("absoluteLeftStickX")
+	@set:JvmName("absoluteLeftStickX")
+	override var absoluteLeftStickX = BoundDoubleSupplier(Math.abs(gamepad.leftStickX))
+	@get:JvmName("absoluteLeftStickY")
+	@set:JvmName("absoluteLeftStickY")
+	override var absoluteLeftStickY = BoundDoubleSupplier(Math.abs(gamepad.leftStickY))
+	@get:JvmName("absoluteRightStickX")
+	@set:JvmName("absoluteRightStickX")
+	override var absoluteRightStickX = BoundDoubleSupplier(Math.abs(gamepad.rightStickX))
+	@get:JvmName("absoluteRightStickY")
+	@set:JvmName("absoluteRightStickY")
+	override var absoluteRightStickY = BoundDoubleSupplier(Math.abs(gamepad.rightStickY))
 	@get:JvmName("dpadUp")
 	@set:JvmName("dpadUp")
 	override var dpadUp = EnhancedBooleanSupplier { gamepad.dpad_up }
